@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { getRepoInfo, getCommits, getCommitDetails, getContributors, getAnalytics } from './git';
+import { getRepoInfo, getCommits, getCommitDetails, getContributors, getAnalytics, compareBranches, getFileTree, getFileHistory } from './git';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -67,6 +67,54 @@ app.get('/api/analytics', async (req: Request, res: Response) => {
   try {
     const analytics = await getAnalytics(repoPath);
     res.json(analytics);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 6. Branch Comparison
+app.get('/api/compare', async (req: Request, res: Response) => {
+  const repoPath = getPath(req);
+  const base = req.query.base as string;
+  const target = req.query.target as string;
+
+  if (!base || !target) {
+    res.status(400).json({ error: 'Missing base or target branch query parameters' });
+    return;
+  }
+
+  try {
+    const comparison = await compareBranches(repoPath, base, target);
+    res.json(comparison);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 7. Get File Tree
+app.get('/api/files', async (req: Request, res: Response) => {
+  const repoPath = getPath(req);
+  try {
+    const tree = await getFileTree(repoPath);
+    res.json(tree);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 8. Get File Commit History
+app.get('/api/file-history', async (req: Request, res: Response) => {
+  const repoPath = getPath(req);
+  const file = req.query.file as string;
+
+  if (!file) {
+    res.status(400).json({ error: 'Missing file query parameter' });
+    return;
+  }
+
+  try {
+    const history = await getFileHistory(repoPath, file);
+    res.json(history);
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }

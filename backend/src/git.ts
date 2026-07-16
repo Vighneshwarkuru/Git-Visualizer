@@ -302,3 +302,147 @@ export async function getAnalytics(repoPath: string): Promise<AnalyticsInfo> {
     commitsByDate,
   };
 }
+
+export interface BranchComparison {
+  aheadCount: number;
+  behindCount: number;
+  aheadCommits: CommitInfo[];
+  behindCommits: CommitInfo[];
+  changedFiles: { file: string; status: string }[];
+}
+
+export async function compareBranches(
+  repoPath: string,
+  base: string,
+  target: string
+): Promise<BranchComparison> {
+  const formatStr = '%H|%P|%an|%ae|%at|%s|%D';
+
+  // Helper to parse logs
+  const parseLog = (logOutput: string): CommitInfo[] => {
+    if (!logOutput.trim()) return [];
+    return logOutput.split('\n').map(line => {
+      const parts = line.split('|');
+      return {
+        sha: parts[0],
+        parents: parts[1] ? parts[1].split(' ') : [],
+        authorName: parts[2],
+        authorEmail: parts[3],
+        timestamp: parseInt(parts[4], 10),
+        message: parts[5],
+        refs: parts[6] ? parts[6].split(', ').map(r => r.trim()).filter(r => r.length > 0) : [],
+      };
+    });
+  };
+
+  // 1. Get counts
+  const aheadCountStr = await runGitCommand(repoPath, ['rev-list', '--count', `${base}..${target}`]);
+  const behindCountStr = await runGitCommand(repoPath, ['rev-list', '--count', `${target}..${base}`]);
+  const aheadCount = parseInt(aheadCountStr.trim(), 10);
+  const behindCount = parseInt(behindCountStr.trim(), 10);
+
+  // 2. Get commits
+  const aheadLog = await runGitCommand(repoPath, ['log', `--pretty=format:${formatStr}`, `${base}..${target}`]);
+  const behindLog = await runGitCommand(repoPath, ['log', `--pretty=format:${formatStr}`, `${target}..${base}`]);
+  const aheadCommits = parseLog(aheadLog);
+  const behindCommits = parseLog(behindLog);
+
+  // 3. Get file changes
+  const diffStatus = await runGitCommand(repoPath, ['diff', '--name-status', `${base}..${target}`]);
+  const changedFiles = diffStatus.split('\n').filter(line => line.trim().length > 0).map(line => {
+    const [status, file] = line.split(/\s+/);
+    return {
+      file: file || status,
+      status: status || 'M',
+    };
+  });
+
+  return {
+    aheadCount,
+    behindCount,
+    aheadCommits,
+    behindCommits,
+    changedFiles,
+  };
+}
+
+export interface TreeNode {
+  name: string;
+  path: string;
+  type: 'file' | 'dir';
+  children?: TreeNode[];
+}
+
+export async function getFileTree(repoPath: string): Promise<TreeNode[]> {
+  const output = await runGitCommand(repoPath, ['ls-files']);
+  const files = output.split('\n').map(f => f.trim()).filter(f => f.length > 0);
+  
+  const root: TreeNode[] = [];
+  
+  const addPath = (parts: string[], fullPath: string, currentLevel: TreeNode[]) => {
+    const name = parts[0];
+    const isFile = parts.length === 1;
+    
+    let existingNode = currentLevel.find(n => n.name === name);
+    if (!existingNode) {
+      existingNode = {
+        name,
+        path: isFile ? fullPath : fullPath.substring(0, fullPath.indexOf(name) + name.length),
+        type: isFile ? 'file' : 'dir',
+      };
+      if (!isFile) {
+        existingNode.children = [];
+      }
+      currentLevel.push(existingNode);
+    }
+    
+    if (!isFile && existingNode.children) {
+      addPath(parts.slice(1), fullPath, existingNode.children);
+    }
+  };
+  
+  for (const file of files) {
+    const parts = file.split('/');
+    addPath(parts, file, root);
+  }
+  
+  const sortTree = (nodes: TreeNode[]) => {
+    nodes.sort((a, b) => {
+      if (a.type !== b.type) {
+        return a.type === 'dir' ? -1 : 1;
+      }
+      return a.name.localeCompare(b.name);
+    });
+    nodes.forEach(n => {
+      if (n.children) sortTree(n.children);
+    });
+  };
+  
+  sortTree(root);
+  return root;
+}
+
+export interface FileHistoryItem {
+  sha: string;
+  authorName: string;
+  authorEmail: string;
+  timestamp: number;
+  message: string;
+}
+
+export async function getFileHistory(repoPath: string, filePath: string): Promise<FileHistoryItem[]> {
+  const formatStr = '%H|%an|%ae|%at|%s';
+  const output = await runGitCommand(repoPath, ['log', '--follow', `--pretty=format:${formatStr}`, '--', filePath]);
+  if (!output.trim()) return [];
+  
+  return output.split('\n').map(line => {
+    const parts = line.split('|');
+    return {
+      sha: parts[0],
+      authorName: parts[1],
+      authorEmail: parts[2],
+      timestamp: parseInt(parts[3], 10),
+      message: parts[4],
+    };
+  });
+}

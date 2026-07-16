@@ -36,7 +36,8 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
 
   // Reset visibility when commits change
   useEffect(() => {
-    setVisibleCount(commits.length);
+    const limit = Math.min(80, commits.length);
+    setVisibleCount(limit);
     setIsPlaying(false);
   }, [commits]);
 
@@ -46,10 +47,13 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
 
     const width = 800;
     const height = 550;
-    const stepLength = 28;
+    
+    // Take the most recent 80 commits so the tree fits the viewport
+    const subsetCommits = commits.slice(0, 80);
+    const stepLength = Math.max(10, Math.min(28, 400 / subsetCommits.length));
 
     // Order from oldest to newest for growing
-    const orderedCommits = [...commits].reverse();
+    const orderedCommits = [...subsetCommits].reverse();
     const computedNodes: RenderNode[] = [];
 
     // Keep track of active growth tips per branch name
@@ -149,12 +153,13 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
 
   // Animation timeline player loop
   useEffect(() => {
+    const totalNodes = Math.min(80, commits.length);
     if (isPlaying) {
       const interval = setInterval(() => {
         setVisibleCount(prev => {
-          if (prev >= commits.length) {
+          if (prev >= totalNodes) {
             setIsPlaying(false);
-            return commits.length;
+            return totalNodes;
           }
           return prev + 1;
         });
@@ -340,14 +345,14 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-300">Bonsai Tree Replay</span>
           <span className="text-[10px] text-slate-500 font-mono">
-            ({visibleCount} / {commits.length} commits grown)
+            ({visibleCount} / {Math.min(80, commits.length)} commits grown)
           </span>
         </div>
 
         <div className="flex items-center gap-3">
           <button
             onClick={() => {
-              if (visibleCount === commits.length) setVisibleCount(1);
+              if (visibleCount === Math.min(80, commits.length)) setVisibleCount(1);
               setIsPlaying(true);
             }}
             disabled={isPlaying}

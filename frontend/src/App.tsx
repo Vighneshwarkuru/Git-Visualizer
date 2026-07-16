@@ -19,6 +19,7 @@ import { CommitDetailsPanel } from './components/CommitDetailsPanel';
 import { AnalyticsDashboard } from './components/AnalyticsDashboard';
 import { BranchComparePanel } from './components/BranchComparePanel';
 import { FileTreeExplorer } from './components/FileTreeExplorer';
+import { GitPlayground } from './components/GitPlayground';
 
 interface RepoInfo {
   isRepo: boolean;
@@ -43,7 +44,7 @@ export default function App() {
   const [detailsLoading, setDetailsLoading] = useState<boolean>(false);
 
   // Tabs
-  const [activeTab, setActiveTab] = useState<'history' | 'analytics' | 'compare' | 'files'>('history');
+  const [activeTab, setActiveTab] = useState<'history' | 'analytics' | 'compare' | 'files' | 'playground'>('history');
 
   // Loading states
   const [loadingRepo, setLoadingRepo] = useState<boolean>(false);
@@ -335,6 +336,16 @@ export default function App() {
                 >
                   <Folder size={14} /> Files
                 </button>
+                <button
+                  onClick={() => setActiveTab('playground')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                    activeTab === 'playground'
+                      ? 'bg-indigo-600 text-white shadow-md'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  🎮 Playground
+                </button>
               </div>
 
               {/* Filtering Controls (Only for History Tab) */}
@@ -473,6 +484,10 @@ export default function App() {
                   setSelectedSha(sha);
                 }}
               />
+            )}
+
+            {activeTab === 'playground' && (
+              <GitPlayground />
             )}
           </div>
 

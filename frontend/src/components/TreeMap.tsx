@@ -144,14 +144,14 @@ export const TreeMap: React.FC<TreeMapProps> = ({
   };
 
   return (
-    <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col">
+    <div className="bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80 flex flex-col">
       <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
         <BarChart3 size={16} className="text-[#d0bcff]" /> Repository TreeMap (Visual Hotspots)
       </h4>
       <div className="w-full">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="w-full h-auto rounded-2xl overflow-hidden border border-transparent bg-[#141218]"
+          className="w-full h-auto rounded-2xl overflow-hidden border border-slate-800/80 bg-[#0b0f19]"
         >
           {leafNodes.map(({ node, rect }) => {
             // Avoid drawing zero size rects
@@ -202,7 +202,7 @@ export const TreeMap: React.FC<TreeMapProps> = ({
       </div>
       <div className="flex items-center gap-4 mt-3 text-[10px] text-slate-500 font-mono select-none">
         <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded bg-[#d0bcff] text-[#381e72]/40 border border-amber-500/30" />
+          <div className="w-2.5 h-2.5 rounded bg-indigo-500 text-white shadow-md shadow-indigo-500/10/40 border border-amber-500/30" />
           <span>Backend Files</span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -210,7 +210,7 @@ export const TreeMap: React.FC<TreeMapProps> = ({
           <span>Frontend Files</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded bg-slate-800/40 border border-transparent/30" />
+          <div className="w-2.5 h-2.5 rounded bg-slate-800/40 border border-slate-800/80/30" />
           <span>Other Files</span>
         </div>
       </div>

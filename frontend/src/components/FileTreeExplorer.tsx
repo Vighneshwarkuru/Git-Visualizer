@@ -48,7 +48,7 @@ const FileNode: React.FC<{
         onClick={handleClick}
         className={`flex items-center py-1.5 px-2 rounded-2xl text-xs cursor-pointer transition-colors ${
           isSelected
-            ? 'bg-[#d0bcff] text-[#381e72]/20 text-[#eaddff] font-semibold'
+            ? 'bg-indigo-500 text-white shadow-md shadow-indigo-500/10/20 text-[#eaddff] font-semibold'
             : 'hover:bg-slate-800/40 text-slate-300 hover:text-white'
         }`}
         style={{ paddingLeft: `${level * 12 + 8}px` }}
@@ -151,7 +151,7 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[500px]">
       {/* File Tree Explorer (Left column, spanning 1/3) */}
-      <div className="lg:col-span-1 bg-[#1d1b20] rounded-3xl p-4 border border-transparent flex flex-col h-full overflow-hidden">
+      <div className="lg:col-span-1 bg-[#131b2e] rounded-3xl p-4 border border-slate-800/80 flex flex-col h-full overflow-hidden">
         <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
           <Folder size={14} className="text-[#d0bcff]" /> Repository Files
         </h4>
@@ -178,7 +178,7 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
       </div>
 
       {/* File History Timeline (Right columns, spanning 2/3) */}
-      <div className="lg:col-span-2 bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col h-full overflow-hidden">
+      <div className="lg:col-span-2 bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80 flex flex-col h-full overflow-hidden">
         <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">
           <GitCommit size={14} className="text-emerald-400" /> File History Timeline
         </h4>
@@ -194,7 +194,7 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
         ) : (
           <div className="flex-1 flex flex-col min-h-0">
             {/* Header info */}
-            <div className="bg-[#1d1b20]/50 border border-transparent/50 rounded-2xl p-3 mb-4 text-xs">
+            <div className="bg-[#131b2e]/50 border border-slate-800/80/50 rounded-2xl p-3 mb-4 text-xs">
               <span className="text-slate-400">Tracking file:</span>
               <div className="font-mono text-slate-200 mt-0.5 break-all font-semibold">{activeFile}</div>
               <div className="text-[10px] text-slate-500 mt-1 uppercase font-bold">
@@ -203,7 +203,7 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
             </div>
 
             {/* Commits scroll timeline */}
-            <div className="flex-1 overflow-y-auto pr-1 space-y-4 relative pl-4 border-l border-transparent">
+            <div className="flex-1 overflow-y-auto pr-1 space-y-4 relative pl-4 border-l border-slate-800/80">
               {history.map((item) => {
                 const dateStr = new Date(item.timestamp * 1000).toLocaleString(undefined, {
                   month: 'short',
@@ -222,12 +222,12 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
                     {/* Circle dot on the border line */}
                     <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-800 border-2 border-emerald-500 group-hover:bg-emerald-500 transition-colors duration-150" />
                     
-                    <div className="bg-[#1d1b20] hover:bg-slate-800/30 border border-transparent hover:border-transparent/60 rounded-3xl p-4 transition-all duration-150">
+                    <div className="bg-[#131b2e] hover:bg-slate-800/30 border border-slate-800/80 hover:border-slate-800/80/60 rounded-3xl p-4 transition-all duration-150">
                       <div className="flex justify-between items-start gap-4">
                         <h5 className="font-bold text-xs text-slate-200 group-hover:text-[#d0bcff] transition-colors">
                           {item.message}
                         </h5>
-                        <span className="font-mono text-[10px] text-slate-500 bg-[#141218] px-2 py-0.5 rounded border border-transparent">
+                        <span className="font-mono text-[10px] text-slate-500 bg-[#0b0f19] px-2 py-0.5 rounded border border-slate-800/80">
                           {item.sha.substring(0, 7)}
                         </span>
                       </div>

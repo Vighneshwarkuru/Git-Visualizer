@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
-/* Material Design 3 / Material You Color Tokens */
+/* Material-Slate Hybrid: Optimized for Soft Contrast and Visible Boundaries */
 :root {
-  --md-sys-color-background: #141218;
-  --md-sys-color-on-background: #e6e1e5;
-  --md-sys-color-surface: #1d1b20;
-  --md-sys-color-surface-container: #211f26;
-  --md-sys-color-surface-container-high: #2b2930;
-  --md-sys-color-primary: #d0bcff; /* Pastel lavender */
-  --md-sys-color-on-primary: #381e72;
-  --md-sys-color-primary-container: #4f378b;
-  --md-sys-color-on-primary-container: #eaddff;
-  --md-sys-color-secondary: #ccc2dc;
-  --md-sys-color-secondary-container: #4a4458;
-  --md-sys-color-on-secondary-container: #e8def8;
-  --md-sys-color-tertiary: #efb8c8; /* Soft peach */
-  --md-sys-color-outline: #938f99;
+  --md-sys-color-background: #0b0f19; /* Dark Slate-Navy */
+  --md-sys-color-on-background: #f1f5f9; /* Soft Off-White */
+  --md-sys-color-surface: #131b2e; /* Slate surface */
+  --md-sys-color-surface-container: #1b2640; /* Distinct container */
+  --md-sys-color-surface-container-high: #243254; /* Active focus container */
+  --md-sys-color-primary: #a5b4fc; /* Soft Lavender-Indigo */
+  --md-sys-color-on-primary: #1e1b4b;
+  --md-sys-color-primary-container: #312e81;
+  --md-sys-color-on-primary-container: #e0e7ff;
+  --md-sys-color-secondary: #cbd5e1;
+  --md-sys-color-secondary-container: #334155;
+  --md-sys-color-on-secondary-container: #f1f5f9;
+  --md-sys-color-outline: #38bdf8; /* Soft light blue for clean highlighted borders */
 }
 
 @layer base {
@@ -30,38 +29,39 @@
 
 /* Material Outlined Buttons and Card Elevations */
 .md-card {
-  background-color: var(--md-sys-color-surface-container);
-  border-radius: 28px; /* Material 3 Extra Large */
+  background-color: var(--md-sys-color-surface);
+  border-radius: 20px; /* Rounded card */
   padding: 1.5rem;
-  border: 1px solid transparent;
+  border: 1px solid rgba(148, 163, 184, 0.12); /* Subtle slate border for clear boundaries */
   transition: all 0.2s ease-in-out;
 }
 
 .md-card-interactive {
-  background-color: var(--md-sys-color-surface-container);
-  border-radius: 28px;
+  background-color: var(--md-sys-color-surface);
+  border-radius: 20px;
   padding: 1.5rem;
-  border: 1px solid transparent;
+  border: 1px solid rgba(148, 163, 184, 0.12);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .md-card-interactive:hover {
-  background-color: var(--md-sys-color-surface-container-high);
+  background-color: var(--md-sys-color-surface-container);
+  border-color: rgba(56, 189, 248, 0.4); /* Glow border on hover */
 }
 
 .md-pill-button {
   background-color: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
-  border-radius: 9999px; /* Pill */
-  @apply px-6 py-2.5 text-xs font-bold transition-all duration-150 shadow-sm active:scale-95;
+  border-radius: 9999px; /* Pill shape */
+  @apply px-5 py-2 text-xs font-bold transition-all duration-150 active:scale-95 shadow-sm;
 }
 
 .md-pill-button-secondary {
   background-color: var(--md-sys-color-secondary-container);
   color: var(--md-sys-color-on-secondary-container);
   border-radius: 9999px;
-  @apply px-6 py-2.5 text-xs font-semibold transition-all duration-150 active:scale-95;
+  @apply px-5 py-2 text-xs font-semibold transition-all duration-150 active:scale-95;
 }
 
 /* Custom scrollbars matching MD3 theme */

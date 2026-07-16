@@ -142,15 +142,15 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     }
 
     const getColorClass = (count: number) => {
-      if (count === 0) return 'bg-[#1d1b20] border-transparent/20';
+      if (count === 0) return 'bg-[#131b2e] border-slate-800/80/20';
       if (count <= 2) return 'bg-amber-950/40 text-[#d0bcff] border-amber-900/30';
       if (count <= 5) return 'bg-amber-800/40 text-[#eaddff] border-amber-700/40';
-      if (count <= 9) return 'bg-[#d0bcff] text-[#381e72]/70 text-amber-200 border-amber-500/50';
-      return 'bg-[#d0bcff] text-[#381e72] text-white border-amber-400';
+      if (count <= 9) return 'bg-indigo-500 text-white shadow-md shadow-indigo-500/10/70 text-amber-200 border-amber-500/50';
+      return 'bg-indigo-500 text-white shadow-md shadow-indigo-500/10 text-white border-amber-400';
     };
 
     return (
-      <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent">
+      <div className="bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
           <Flame size={16} className="text-[#d0bcff]" /> Contribution Activity Calendar
         </h4>
@@ -176,11 +176,11 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
         </div>
         <div className="flex justify-end items-center gap-1.5 mt-3 text-[10px] text-slate-500 select-none">
           <span>Less</span>
-          <div className="w-2.5 h-2.5 rounded-sm bg-[#1d1b20] border border-transparent/20" />
+          <div className="w-2.5 h-2.5 rounded-sm bg-[#131b2e] border border-slate-800/80/20" />
           <div className="w-2.5 h-2.5 rounded-sm bg-amber-950/40 border border-amber-900/30" />
           <div className="w-2.5 h-2.5 rounded-sm bg-amber-800/40 border border-amber-700/40" />
-          <div className="w-2.5 h-2.5 rounded-sm bg-[#d0bcff] text-[#381e72]/70 border border-amber-500/50" />
-          <div className="w-2.5 h-2.5 rounded-sm bg-[#d0bcff] text-[#381e72] border border-amber-400" />
+          <div className="w-2.5 h-2.5 rounded-sm bg-indigo-500 text-white shadow-md shadow-indigo-500/10/70 border border-amber-500/50" />
+          <div className="w-2.5 h-2.5 rounded-sm bg-indigo-500 text-white shadow-md shadow-indigo-500/10 border border-amber-400" />
           <span>More</span>
         </div>
       </div>
@@ -197,7 +197,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     const circumference = 2 * Math.PI * r;
 
     return (
-      <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col h-[320px]">
+      <div className="bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80 flex flex-col h-[320px]">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
           <PieChart size={16} className="text-[#d0bcff]" /> Codebase Composition
         </h4>
@@ -228,7 +228,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
                 );
               })}
               {/* Inner cutout */}
-              <circle cx={cx} cy={cy} r="38" fill="#0f172a" />
+              <circle cx={cx} cy={cy} r="38" fill="#131b2e" />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
               <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Files</span>
@@ -263,7 +263,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     const gap = 12;
 
     return (
-      <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col h-[320px]">
+      <div className="bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80 flex flex-col h-[320px]">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
           <BarChart3 size={16} className="text-emerald-400" /> Commits by Weekday
         </h4>
@@ -361,7 +361,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
       : '';
 
     return (
-      <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent">
+      <div className="bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
           <Activity size={16} className="text-[#d0bcff]" /> Commits Timeline (Last 12 Active Days)
         </h4>
@@ -387,7 +387,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
             {/* Nodes */}
             {points.map((p, idx) => (
               <g key={idx} className="group cursor-pointer">
-                <circle cx={p.x} cy={p.y} r="5" fill="#6366f1" stroke="#0f172a" strokeWidth="1.5" />
+                <circle cx={p.x} cy={p.y} r="5" fill="#6366f1" stroke="#131b2e" strokeWidth="1.5" />
                 <circle cx={p.x} cy={p.y} r="8" fill="#6366f1" opacity="0" className="group-hover:opacity-30 transition-opacity" />
                 <text
                   x={p.x}
@@ -423,17 +423,17 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-transparent rounded-3xl p-5 flex items-center justify-between">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800/80 rounded-3xl p-5 flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Commits</span>
             <div className="text-2xl font-black text-slate-100 mt-1">{analytics.totalCommits}</div>
           </div>
-          <div className="w-10 h-10 rounded-2xl bg-[#d0bcff] text-[#381e72]/10 border border-amber-500/20 flex items-center justify-center text-[#d0bcff]">
+          <div className="w-10 h-10 rounded-2xl bg-indigo-500 text-white shadow-md shadow-indigo-500/10/10 border border-amber-500/20 flex items-center justify-center text-[#d0bcff]">
             <GitCommit size={20} />
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-transparent rounded-3xl p-5 flex items-center justify-between">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800/80 rounded-3xl p-5 flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Contributors</span>
             <div className="text-2xl font-black text-slate-100 mt-1">{analytics.totalContributors}</div>
@@ -443,7 +443,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-transparent rounded-3xl p-5 flex items-center justify-between">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800/80 rounded-3xl p-5 flex items-center justify-between">
           <div>
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Unique File Hits</span>
             <div className="text-2xl font-black text-slate-100 mt-1">{analytics.mostModifiedFiles.length}+</div>
@@ -471,7 +471,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Hotspots */}
-        <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col h-[400px]">
+        <div className="bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80 flex flex-col h-[400px]">
           <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
             <BarChart3 size={16} className="text-emerald-500" /> Top File Hotspots (Most Changed)
           </h4>
@@ -501,13 +501,13 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
         </div>
 
         {/* Contributors */}
-        <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col h-[400px]">
+        <div className="bg-[#131b2e] rounded-3xl p-6 border border-slate-800/80 flex flex-col h-[400px]">
           <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
             <Users size={16} className="text-[#d0bcff]" /> Contributor Leaderboard
           </h4>
           <div className="flex-1 overflow-y-auto space-y-3 pr-1">
             {contributors.map((contrib) => (
-              <div key={contrib.email} className="flex items-center justify-between p-2.5 rounded-2xl bg-[#1d1b20]/50 hover:bg-slate-800/20 border border-transparent/40">
+              <div key={contrib.email} className="flex items-center justify-between p-2.5 rounded-2xl bg-[#131b2e]/50 hover:bg-slate-800/20 border border-slate-800/80/40">
                 <div className="flex items-center gap-3 min-w-0 pr-4">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-purple-600 text-xs font-black flex items-center justify-center text-white flex-shrink-0">
                     {contrib.name.charAt(0).toUpperCase()}

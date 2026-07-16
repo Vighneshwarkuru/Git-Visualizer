@@ -178,7 +178,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
             cy={y}
             r={isSelected ? 7.5 * zoom : 5.5 * zoom}
             fill={color}
-            stroke="#0f172a"
+            stroke="#131b2e"
             strokeWidth="1.5"
             className="transition-all duration-200 group-hover:scale-125"
           />
@@ -198,7 +198,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
   return (
     <div className="flex flex-col gap-3">
       {/* Zoom / View controls bar */}
-      <div className="flex items-center justify-between bg-[#1d1b20] px-4 py-2 rounded-3xl border border-transparent backdrop-blur-md">
+      <div className="flex items-center justify-between bg-[#131b2e] px-4 py-2 rounded-3xl border border-slate-800/80 backdrop-blur-md">
         <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
           💡 Hover nodes to highlight ancestry paths
         </span>
@@ -231,7 +231,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
       </div>
 
       {/* Main Graph Layout */}
-      <div className="flex bg-[#1d1b20] rounded-3xl border border-transparent overflow-hidden backdrop-blur-md relative">
+      <div className="flex bg-[#131b2e] rounded-3xl border border-slate-800/80 overflow-hidden backdrop-blur-md relative">
         {/* Graph SVG Column */}
         <div className="relative overflow-visible" style={{ width: svgWidth }}>
           <svg
@@ -297,10 +297,10 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                 onClick={() => onSelectCommit(commit.sha)}
                 onMouseEnter={() => setHoveredSha(commit.sha)}
                 onMouseLeave={() => setHoveredSha(null)}
-                className={`flex items-center px-4 cursor-pointer transition-all duration-150 border-b border-transparent ${opacity} ${
+                className={`flex items-center px-4 cursor-pointer transition-all duration-150 border-b border-slate-800/80 ${opacity} ${
                   isSelected
-                    ? 'bg-[#4f378b]/30 border-l-4 border-[#d0bcff]'
-                    : 'hover:bg-slate-800/30 border-l-2 border-transparent'
+                    ? 'bg-indigo-500/10 border-l-4 border-indigo-400'
+                    : 'hover:bg-slate-800/30 border-l-2 border-slate-800/80'
                 }`}
                 style={{ height: rowHeight }}
               >
@@ -315,7 +315,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                     {branches.map(branch => (
                       <span
                         key={branch}
-                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#4f378b] text-[#eaddff] flex-shrink-0"
+                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex-shrink-0"
                       >
                         {branch}
                       </span>
@@ -325,7 +325,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                     {tags.map(tag => (
                       <span
                         key={tag}
-                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#d0bcff] text-[#381e72]/20 text-[#d0bcff] border border-amber-500/30 flex-shrink-0"
+                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-indigo-500 text-white shadow-md shadow-indigo-500/10/20 text-[#d0bcff] border border-amber-500/30 flex-shrink-0"
                       >
                         {tag}
                       </span>

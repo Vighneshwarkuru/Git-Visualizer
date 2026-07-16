@@ -336,7 +336,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
   return (
     <div className="flex flex-col gap-4">
       {/* Controls HUD */}
-      <div className="flex items-center justify-between bg-[#1d1b20] px-6 py-3 rounded-3xl border border-transparent backdrop-blur-md">
+      <div className="flex items-center justify-between bg-[#131b2e] px-6 py-3 rounded-3xl border border-slate-800/80 backdrop-blur-md">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-300">Bonsai Tree Replay</span>
           <span className="text-[10px] text-slate-500 font-mono">
@@ -351,7 +351,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
               setIsPlaying(true);
             }}
             disabled={isPlaying}
-            className="bg-[#d0bcff] text-[#381e72] hover:bg-[#d0bcff] text-[#381e72] disabled:bg-slate-800 px-3.5 py-1.5 rounded-3xl text-xs font-bold text-white transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="bg-indigo-500 text-white shadow-md shadow-indigo-500/10 hover:bg-indigo-500 text-white shadow-md shadow-indigo-500/10 disabled:bg-slate-800 px-3.5 py-1.5 rounded-3xl text-xs font-bold text-white transition-colors flex items-center gap-1.5 cursor-pointer"
           >
             <Play size={12} fill="currentColor" /> Grow Tree
           </button>
@@ -376,7 +376,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 min-h-[500px]">
         {/* Main Canvas Viewport (Left columns, 3/4) */}
-        <div ref={containerRef} className="lg:col-span-3 bg-[#1d1b20] rounded-3xl border border-transparent overflow-hidden backdrop-blur-md relative flex items-center justify-center">
+        <div ref={containerRef} className="lg:col-span-3 bg-[#131b2e] rounded-3xl border border-slate-800/80 overflow-hidden backdrop-blur-md relative flex items-center justify-center">
           <canvas
             ref={canvasRef}
             width={800}
@@ -389,7 +389,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
           {/* Sci-fi guide overlay */}
           <div className="absolute top-4 left-4 pointer-events-none text-[10px] text-slate-500 font-mono space-y-1 select-none">
             <div className="flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded bg-[#d0bcff] text-[#381e72]" />
+              <div className="w-2 h-2 rounded bg-indigo-500 text-white shadow-md shadow-indigo-500/10" />
               <span>Main Trunk (main branch)</span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -397,7 +397,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
               <span>Feature Limbs</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded bg-[#d0bcff] text-[#381e72]" />
+              <div className="w-2 h-2 rounded bg-indigo-500 text-white shadow-md shadow-indigo-500/10" />
               <span>Merge Vines</span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -408,7 +408,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
         </div>
 
         {/* Botanical Commit Details HUD (Right column, 1/4) */}
-        <div className="lg:col-span-1 bg-[#1d1b20] p-5 rounded-3xl border border-transparent flex flex-col justify-between h-full min-h-[400px]">
+        <div className="lg:col-span-1 bg-[#131b2e] p-5 rounded-3xl border border-slate-800/80 flex flex-col justify-between h-full min-h-[400px]">
           <div>
             <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block mb-2 select-none">
               Botanical HUD console
@@ -421,8 +421,8 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
 
                 return (
                   <div className="space-y-4">
-                    <div className="border-b border-transparent pb-3">
-                      <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-[#d0bcff] text-[#381e72]/20 text-[#d0bcff] border border-amber-500/30 font-mono">
+                    <div className="border-b border-slate-800/80 pb-3">
+                      <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-indigo-500 text-white shadow-md shadow-indigo-500/10/20 text-[#d0bcff] border border-amber-500/30 font-mono">
                         {node.branch}
                       </span>
                       <h4 className="font-bold text-sm text-slate-200 mt-2">{node.message}</h4>
@@ -465,7 +465,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
             )}
           </div>
 
-          <div className="bg-[#1d1b20]/30 border border-transparent rounded-3xl p-3.5 text-[10px] text-slate-400 flex items-start gap-2 leading-relaxed">
+          <div className="bg-[#131b2e]/30 border border-slate-800/80 rounded-3xl p-3.5 text-[10px] text-slate-400 flex items-start gap-2 leading-relaxed">
             <AlertCircle size={14} className="text-[#d0bcff] flex-shrink-0 mt-0.5" />
             <span>Clicking a leaf selects the commit. Dragging the timeline causes the tree to grow limb-by-limb!</span>
           </div>

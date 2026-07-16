@@ -165,9 +165,9 @@ export const GitPlayground: React.FC = () => {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 min-h-[500px]">
       {/* 1. Missions Selector & Instructions Panel (1/4 Column) */}
-      <div className="xl:col-span-1 bg-slate-900/60 p-5 rounded-2xl border border-slate-800/80 backdrop-blur-md flex flex-col justify-between">
+      <div className="xl:col-span-1 bg-[#1d1b20] p-5 rounded-3xl border border-transparent backdrop-blur-md flex flex-col justify-between">
         <div>
-          <span className="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+          <span className="text-[10px] bg-[#d0bcff] text-[#381e72]/10 text-[#d0bcff] border border-amber-500/20 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
             Git Academy
           </span>
           <h3 className="text-base font-black mt-2 text-white">Interactive Levels</h3>
@@ -178,24 +178,24 @@ export const GitPlayground: React.FC = () => {
               <button
                 key={m.id}
                 onClick={() => setSelectedMissionIdx(idx)}
-                className={`w-full text-left p-2.5 rounded-xl text-xs font-semibold flex items-center justify-between border transition-all ${
+                className={`w-full text-left p-2.5 rounded-3xl text-xs font-semibold flex items-center justify-between border transition-all ${
                   selectedMissionIdx === idx
-                    ? 'bg-amber-600 border-amber-500 text-white shadow-lg shadow-amber-600/10'
-                    : 'bg-slate-950/40 border-slate-800/60 hover:bg-slate-800/20 text-slate-400'
+                    ? 'bg-[#d0bcff] text-[#381e72] border-amber-500 text-white shadow-lg shadow-none'
+                    : 'bg-[#211f26] border-transparent hover:bg-slate-800/20 text-slate-400'
                 }`}
               >
                 <span>{m.title}</span>
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-950/40 text-slate-400">
+                <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#211f26] text-slate-400">
                   {m.difficulty}
                 </span>
               </button>
             ))}
           </div>
 
-          <div className="border-t border-slate-800/60 mt-4 pt-4 space-y-3">
+          <div className="border-t border-transparent mt-4 pt-4 space-y-3">
             {/* Concept explainer */}
-            <div className="bg-slate-950/40 p-3 rounded-xl border border-slate-800/40 text-xs text-slate-300">
-              <div className="flex items-center gap-1.5 text-amber-400 font-bold mb-1">
+            <div className="bg-[#211f26] p-3 rounded-3xl border border-transparent/40 text-xs text-slate-300">
+              <div className="flex items-center gap-1.5 text-[#d0bcff] font-bold mb-1">
                 <HelpCircle size={14} /> Git Core Concept
               </div>
               <p className="leading-relaxed text-[11px] text-slate-400">{mission.concept}</p>
@@ -206,7 +206,7 @@ export const GitPlayground: React.FC = () => {
               <h4 className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Instructions</h4>
               {mission.instructions.map((inst, idx) => (
                 <div key={idx} className="flex gap-2 text-[11px] leading-relaxed text-slate-300">
-                  <span className="text-amber-400 font-bold font-mono">{idx + 1}.</span>
+                  <span className="text-[#d0bcff] font-bold font-mono">{idx + 1}.</span>
                   <span>{inst}</span>
                 </div>
               ))}
@@ -215,9 +215,9 @@ export const GitPlayground: React.FC = () => {
         </div>
 
         {/* Level Completion status */}
-        <div className="mt-6 pt-4 border-t border-slate-800/60">
+        <div className="mt-6 pt-4 border-t border-transparent">
           {isSuccess ? (
-            <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl p-3 text-center flex flex-col items-center gap-1">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-3xl p-3 text-center flex flex-col items-center gap-1">
               <CheckCircle className="animate-bounce" size={24} />
               <span className="text-xs font-black">Level Completed!</span>
               <p className="text-[9px] text-slate-400">You successfully performed this git operation.</p>
@@ -233,7 +233,7 @@ export const GitPlayground: React.FC = () => {
           ) : (
             <button
               onClick={handleReset}
-              className="w-full bg-slate-950 hover:bg-slate-900 border border-slate-800 text-slate-400 hover:text-white font-semibold py-2 px-4 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+              className="w-full bg-[#141218] hover:bg-[#1d1b20] border border-transparent text-slate-400 hover:text-white font-semibold py-2 px-4 rounded-3xl text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
             >
               <RotateCcw size={12} /> Reset Level
             </button>
@@ -245,11 +245,11 @@ export const GitPlayground: React.FC = () => {
       <div className="xl:col-span-3 flex flex-col gap-6">
         
         {/* Sandbox visual board */}
-        <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 flex-1 flex flex-col justify-between h-[360px] relative overflow-hidden backdrop-blur-md">
+        <div className="bg-[#1d1b20] border border-transparent rounded-3xl p-6 flex-1 flex flex-col justify-between h-[360px] relative overflow-hidden backdrop-blur-md">
           {/* Staging Area Board */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-b border-slate-800/60 pb-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-b border-transparent pb-4 mb-4">
             {/* Unstaged Box */}
-            <div className="bg-slate-950/40 rounded-xl p-3 border border-slate-800/40">
+            <div className="bg-[#211f26] rounded-3xl p-3 border border-transparent/40">
               <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-2">
                 Unstaged Workspace Changes
               </span>
@@ -272,7 +272,7 @@ export const GitPlayground: React.FC = () => {
             </div>
 
             {/* Staged Box */}
-            <div className="bg-slate-950/40 rounded-xl p-3 border border-slate-800/40">
+            <div className="bg-[#211f26] rounded-3xl p-3 border border-transparent/40">
               <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-2">
                 Staged Changes (Ready to Commit)
               </span>
@@ -307,12 +307,12 @@ export const GitPlayground: React.FC = () => {
                 return (
                   <React.Fragment key={commit.id}>
                     <div
-                      className={`w-32 bg-slate-950 border p-3 rounded-xl flex flex-col justify-between h-20 shadow-md relative group transition-all duration-150 ${
+                      className={`w-32 bg-[#141218] border p-3 rounded-3xl flex flex-col justify-between h-20 shadow-md relative group transition-all duration-150 ${
                         isActive
                           ? 'border-amber-500 shadow-amber-500/10 scale-105'
                           : isCurrentBranch
-                          ? 'border-slate-800 hover:border-slate-700'
-                          : 'border-slate-900/60 opacity-60'
+                          ? 'border-transparent hover:border-transparent'
+                          : 'border-transparent/60 opacity-60'
                       }`}
                     >
                       <div>
@@ -321,7 +321,7 @@ export const GitPlayground: React.FC = () => {
                           <span
                             className={`px-1 rounded font-bold ${
                               commit.branch === 'main'
-                                ? 'bg-amber-500/20 text-amber-400'
+                                ? 'bg-[#d0bcff] text-[#381e72]/20 text-[#d0bcff]'
                                 : 'bg-blue-500/20 text-blue-400'
                             }`}
                           >
@@ -334,7 +334,7 @@ export const GitPlayground: React.FC = () => {
                       </div>
 
                       {commit.isMerge && (
-                        <span className="text-[8px] bg-amber-500/20 text-amber-400 border border-amber-500/30 px-1 py-0.5 rounded w-fit font-bold flex items-center gap-0.5 mt-1">
+                        <span className="text-[8px] bg-[#d0bcff] text-[#381e72]/20 text-[#d0bcff] border border-amber-500/30 px-1 py-0.5 rounded w-fit font-bold flex items-center gap-0.5 mt-1">
                           <GitMerge size={8} /> Merge Commit
                         </span>
                       )}
@@ -351,10 +351,10 @@ export const GitPlayground: React.FC = () => {
           </div>
 
           {/* Active branch indicators */}
-          <div className="flex justify-between items-center pt-2 border-t border-slate-800/60 text-xs">
+          <div className="flex justify-between items-center pt-2 border-t border-transparent text-xs">
             <div className="flex items-center gap-2">
               <span className="text-[10px] text-slate-500 font-bold uppercase">Active Branch Pointer:</span>
-              <span className="px-2 py-0.5 rounded bg-amber-600 text-white font-mono text-[10px] font-bold flex items-center gap-1 shadow-md shadow-amber-600/10">
+              <span className="px-2 py-0.5 rounded bg-[#d0bcff] text-[#381e72] text-white font-mono text-[10px] font-bold flex items-center gap-1 shadow-md shadow-none">
                 <GitBranch size={10} /> HEAD -&gt; {sandbox.currentBranch}
               </span>
             </div>
@@ -368,8 +368,8 @@ export const GitPlayground: React.FC = () => {
                     onClick={() => handleCheckoutBranch(b)}
                     className={`cursor-pointer px-1.5 py-0.5 rounded font-mono text-[9px] font-semibold border ${
                       b === sandbox.currentBranch
-                        ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200'
+                        ? 'bg-[#d0bcff] text-[#381e72]/20 text-[#d0bcff] border-amber-500/30'
+                        : 'bg-[#1d1b20] border-transparent text-slate-400 hover:text-slate-200'
                     }`}
                   >
                     {b}
@@ -381,14 +381,14 @@ export const GitPlayground: React.FC = () => {
         </div>
 
         {/* Sandbox CLI Controls Console */}
-        <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800/80 backdrop-blur-md space-y-4">
+        <div className="bg-[#1d1b20] p-5 rounded-3xl border border-transparent backdrop-blur-md space-y-4">
           <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-            <GitCommit size={14} className="text-amber-400" /> Command Board Console
+            <GitCommit size={14} className="text-[#d0bcff]" /> Command Board Console
           </h4>
 
           {/* Error notifications */}
           {errorMsg && (
-            <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-xl p-3 flex items-start gap-2 text-[11px]">
+            <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-3xl p-3 flex items-start gap-2 text-[11px]">
               <AlertCircle size={14} className="mt-0.5 flex-shrink-0" />
               <span>{errorMsg}</span>
             </div>
@@ -405,11 +405,11 @@ export const GitPlayground: React.FC = () => {
                 placeholder="Commit message..."
                 value={commitMessage}
                 onChange={(e) => setCommitMessage(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-amber-500"
+                className="w-full bg-[#141218] border border-transparent rounded-2xl px-2.5 py-1.5 text-xs focus:outline-none focus:border-amber-500"
               />
               <button
                 type="submit"
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-1.5 px-3 rounded-lg text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-1.5 px-3 rounded-2xl text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
               >
                 <GitCommit size={12} /> git commit
               </button>
@@ -425,11 +425,11 @@ export const GitPlayground: React.FC = () => {
                 placeholder="New branch name..."
                 value={newBranchName}
                 onChange={(e) => setNewBranchName(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-amber-500"
+                className="w-full bg-[#141218] border border-transparent rounded-2xl px-2.5 py-1.5 text-xs focus:outline-none focus:border-amber-500"
               />
               <button
                 onClick={handleCreateBranch}
-                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-1.5 px-3 rounded-lg text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-1.5 px-3 rounded-2xl text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
               >
                 <GitBranch size={12} /> git branch
               </button>
@@ -443,7 +443,7 @@ export const GitPlayground: React.FC = () => {
               <select
                 value={mergeBranchTarget}
                 onChange={(e) => setMergeBranchTarget(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-amber-500 cursor-pointer font-mono"
+                className="w-full bg-[#141218] border border-transparent rounded-2xl px-2.5 py-1.5 text-xs focus:outline-none focus:border-amber-500 cursor-pointer font-mono"
               >
                 <option value="">Select branch to merge...</option>
                 {sandbox.branches
@@ -454,7 +454,7 @@ export const GitPlayground: React.FC = () => {
               </select>
               <button
                 onClick={handleMerge}
-                className="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-1.5 px-3 rounded-lg text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                className="w-full bg-[#d0bcff] text-[#381e72] hover:bg-[#d0bcff] text-[#381e72] text-white font-bold py-1.5 px-3 rounded-2xl text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
               >
                 <GitMerge size={12} /> git merge
               </button>

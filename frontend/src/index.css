@@ -1,45 +1,84 @@
 @import "tailwindcss";
 
-/* Base styles and custom scrollbar for rich Obsidian/Bronze aesthetics */
+/* Material Design 3 / Material You Color Tokens */
+:root {
+  --md-sys-color-background: #141218;
+  --md-sys-color-on-background: #e6e1e5;
+  --md-sys-color-surface: #1d1b20;
+  --md-sys-color-surface-container: #211f26;
+  --md-sys-color-surface-container-high: #2b2930;
+  --md-sys-color-primary: #d0bcff; /* Pastel lavender */
+  --md-sys-color-on-primary: #381e72;
+  --md-sys-color-primary-container: #4f378b;
+  --md-sys-color-on-primary-container: #eaddff;
+  --md-sys-color-secondary: #ccc2dc;
+  --md-sys-color-secondary-container: #4a4458;
+  --md-sys-color-on-secondary-container: #e8def8;
+  --md-sys-color-tertiary: #efb8c8; /* Soft peach */
+  --md-sys-color-outline: #938f99;
+}
+
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-200 font-sans antialiased;
-    background-color: #08080a; /* Obsidian black */
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply antialiased;
     overflow-x: hidden;
   }
 }
 
-/* Custom scrollbars with bronze accents */
+/* Material Outlined Buttons and Card Elevations */
+.md-card {
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: 28px; /* Material 3 Extra Large */
+  padding: 1.5rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.md-card-interactive {
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: 28px;
+  padding: 1.5rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.md-card-interactive:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.md-pill-button {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-radius: 9999px; /* Pill */
+  @apply px-6 py-2.5 text-xs font-bold transition-all duration-150 shadow-sm active:scale-95;
+}
+
+.md-pill-button-secondary {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border-radius: 9999px;
+  @apply px-6 py-2.5 text-xs font-semibold transition-all duration-150 active:scale-95;
+}
+
+/* Custom scrollbars matching MD3 theme */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #08080a;
+  background: var(--md-sys-color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(217, 119, 6, 0.25); /* Gold/bronze tint */
-  border-radius: 3px;
+  background: var(--md-sys-color-secondary-container);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 119, 6, 0.45);
-}
-
-/* Sci-fi gold pulsing animations */
-@keyframes gold-glow {
-  0%, 100% {
-    opacity: 0.4;
-    box-shadow: 0 0 10px rgba(217, 119, 6, 0.2);
-  }
-  50% {
-    opacity: 0.8;
-    box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
-  }
-}
-
-.animate-gold-glow {
-  animation: gold-glow 2.5s infinite ease-in-out;
+  background: var(--md-sys-color-outline);
 }

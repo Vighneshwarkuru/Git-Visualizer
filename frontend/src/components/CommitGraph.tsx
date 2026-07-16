@@ -198,14 +198,14 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
   return (
     <div className="flex flex-col gap-3">
       {/* Zoom / View controls bar */}
-      <div className="flex items-center justify-between bg-slate-900/60 px-4 py-2 rounded-xl border border-slate-800/80 backdrop-blur-md">
+      <div className="flex items-center justify-between bg-[#1d1b20] px-4 py-2 rounded-3xl border border-transparent backdrop-blur-md">
         <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
           💡 Hover nodes to highlight ancestry paths
         </span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setZoom(prev => Math.max(0.6, prev - 0.1))}
-            className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition-colors"
+            className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-white rounded-2xl transition-colors"
             title="Zoom Out"
           >
             <ZoomOut size={14} />
@@ -215,14 +215,14 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
           </span>
           <button
             onClick={() => setZoom(prev => Math.min(1.5, prev + 0.1))}
-            className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition-colors"
+            className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-white rounded-2xl transition-colors"
             title="Zoom In"
           >
             <ZoomIn size={14} />
           </button>
           <button
             onClick={() => setZoom(1.0)}
-            className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition-colors"
+            className="p-1.5 hover:bg-slate-800 text-slate-400 hover:text-white rounded-2xl transition-colors"
             title="Reset Zoom"
           >
             <Maximize2 size={14} />
@@ -231,7 +231,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
       </div>
 
       {/* Main Graph Layout */}
-      <div className="flex bg-slate-900/40 rounded-xl border border-slate-800/80 overflow-hidden backdrop-blur-md relative">
+      <div className="flex bg-[#1d1b20] rounded-3xl border border-transparent overflow-hidden backdrop-blur-md relative">
         {/* Graph SVG Column */}
         <div className="relative overflow-visible" style={{ width: svgWidth }}>
           <svg
@@ -297,9 +297,9 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                 onClick={() => onSelectCommit(commit.sha)}
                 onMouseEnter={() => setHoveredSha(commit.sha)}
                 onMouseLeave={() => setHoveredSha(null)}
-                className={`flex items-center px-4 cursor-pointer transition-all duration-150 border-b border-slate-800/30 ${opacity} ${
+                className={`flex items-center px-4 cursor-pointer transition-all duration-150 border-b border-transparent ${opacity} ${
                   isSelected
-                    ? 'bg-amber-500/10 border-l-2 border-amber-500'
+                    ? 'bg-[#4f378b]/30 border-l-4 border-[#d0bcff]'
                     : 'hover:bg-slate-800/30 border-l-2 border-transparent'
                 }`}
                 style={{ height: rowHeight }}
@@ -315,7 +315,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                     {branches.map(branch => (
                       <span
                         key={branch}
-                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/25 flex-shrink-0"
+                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#4f378b] text-[#eaddff] flex-shrink-0"
                       >
                         {branch}
                       </span>
@@ -325,7 +325,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                     {tags.map(tag => (
                       <span
                         key={tag}
-                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30 flex-shrink-0"
+                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#d0bcff] text-[#381e72]/20 text-[#d0bcff] border border-amber-500/30 flex-shrink-0"
                       >
                         {tag}
                       </span>

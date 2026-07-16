@@ -70,9 +70,9 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
   return (
     <div className="space-y-6">
       {/* Selector controls */}
-      <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60">
+      <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
-          <ArrowLeftRight size={16} className="text-amber-400" /> Compare Branches
+          <ArrowLeftRight size={16} className="text-[#d0bcff]" /> Compare Branches
         </h4>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -83,7 +83,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
             <select
               value={baseBranch}
               onChange={(e) => setBaseBranch(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500 font-mono"
+              className="w-full bg-[#1d1b20] border border-transparent rounded-2xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500 font-mono"
             >
               {branches.map(b => (
                 <option key={b} value={b}>{b}</option>
@@ -98,7 +98,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
             <select
               value={targetBranch}
               onChange={(e) => setTargetBranch(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500 font-mono"
+              className="w-full bg-[#1d1b20] border border-transparent rounded-2xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500 font-mono"
             >
               {branches.map(b => (
                 <option key={b} value={b}>{b}</option>
@@ -110,7 +110,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
         <button
           onClick={handleCompare}
           disabled={loading || baseBranch === targetBranch}
-          className="mt-4 w-full bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
+          className="mt-4 w-full bg-[#d0bcff] text-[#381e72] hover:bg-[#d0bcff] text-[#381e72] disabled:bg-slate-800 disabled:text-slate-500 text-white font-semibold py-2 px-4 rounded-2xl transition-colors text-sm"
         >
           {loading ? 'Comparing...' : baseBranch === targetBranch ? 'Select Different Branches' : 'Compare'}
         </button>
@@ -118,7 +118,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
 
       {/* Error state */}
       {error && (
-        <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-xl p-4 flex items-start gap-3 text-xs">
+        <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-3xl p-4 flex items-start gap-3 text-xs">
           <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
           <span>{error}</span>
         </div>
@@ -129,12 +129,12 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
         <div className="space-y-6">
           {/* Summary counts */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-900/40 rounded-xl p-4 border border-slate-800/40 text-center">
+            <div className="bg-[#1d1b20] rounded-3xl p-4 border border-transparent/40 text-center">
               <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Ahead</span>
               <div className="text-xl font-black text-emerald-400 mt-1">+{comparison.aheadCount}</div>
               <span className="text-[9px] text-slate-400 block mt-0.5">commits in {targetBranch}</span>
             </div>
-            <div className="bg-slate-900/40 rounded-xl p-4 border border-slate-800/40 text-center">
+            <div className="bg-[#1d1b20] rounded-3xl p-4 border border-transparent/40 text-center">
               <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Behind</span>
               <div className="text-xl font-black text-rose-400 mt-1">-{comparison.behindCount}</div>
               <span className="text-[9px] text-slate-400 block mt-0.5">commits behind {baseBranch}</span>
@@ -143,7 +143,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Unique commits */}
-            <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60 flex flex-col h-[320px]">
+            <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col h-[320px]">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
                 <GitCommit size={14} className="text-emerald-400" /> Commits Unique to {targetBranch}
               </h4>
@@ -155,7 +155,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
                     <div
                       key={commit.sha}
                       onClick={() => onSelectCommit(commit.sha)}
-                      className="p-2.5 rounded-lg bg-slate-900/50 hover:bg-slate-800/40 border border-slate-800/30 cursor-pointer flex justify-between items-center text-xs transition-colors"
+                      className="p-2.5 rounded-2xl bg-[#1d1b20]/50 hover:bg-slate-800/40 border border-transparent cursor-pointer flex justify-between items-center text-xs transition-colors"
                     >
                       <div className="min-w-0 pr-4">
                         <div className="font-bold text-slate-200 truncate">{commit.message}</div>
@@ -171,9 +171,9 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
             </div>
 
             {/* Changed files list */}
-            <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60 flex flex-col h-[320px]">
+            <div className="bg-[#1d1b20] rounded-3xl p-6 border border-transparent flex flex-col h-[320px]">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                <FileText size={14} className="text-amber-400" /> Changed Files ({comparison.changedFiles.length})
+                <FileText size={14} className="text-[#d0bcff]" /> Changed Files ({comparison.changedFiles.length})
               </h4>
               <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
                 {comparison.changedFiles.length === 0 ? (
@@ -182,7 +182,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
                   comparison.changedFiles.map(file => (
                     <div
                       key={file.file}
-                      className="flex items-center justify-between p-2 rounded-lg bg-slate-900/20 hover:bg-slate-800/10 text-xs"
+                      className="flex items-center justify-between p-2 rounded-2xl bg-[#1d1b20]/20 hover:bg-slate-800/10 text-xs"
                     >
                       <span className="font-mono text-slate-300 truncate pr-4" title={file.file}>
                         {file.file}

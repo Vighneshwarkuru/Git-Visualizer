@@ -35,7 +35,7 @@ export const CommitDetailsPanel: React.FC<CommitDetailsPanelProps> = ({
 
   if (loading) {
     return (
-      <div className="h-full w-full bg-slate-900 border-l border-slate-800 flex items-center justify-center p-8">
+      <div className="h-full w-full bg-[#1d1b20] border-l border-transparent flex items-center justify-center p-8">
         <div className="flex flex-col items-center gap-3">
           <div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
           <span className="text-sm text-slate-400">Loading commit details...</span>
@@ -46,7 +46,7 @@ export const CommitDetailsPanel: React.FC<CommitDetailsPanelProps> = ({
 
   if (!details) {
     return (
-      <div className="h-full w-full bg-slate-900 border-l border-slate-800 flex items-center justify-center p-8 text-slate-500 text-sm">
+      <div className="h-full w-full bg-[#1d1b20] border-l border-transparent flex items-center justify-center p-8 text-slate-500 text-sm">
         Select a commit to view details
       </div>
     );
@@ -103,15 +103,15 @@ export const CommitDetailsPanel: React.FC<CommitDetailsPanelProps> = ({
     }
 
     return (
-      <div className="flex flex-col rounded-lg border border-slate-800 bg-slate-950/80 overflow-hidden">
-        <div className="flex justify-between items-center bg-slate-900 px-4 py-2 border-b border-slate-800">
+      <div className="flex flex-col rounded-2xl border border-transparent bg-[#141218]/80 overflow-hidden">
+        <div className="flex justify-between items-center bg-[#1d1b20] px-4 py-2 border-b border-transparent">
           <span className="text-xs font-semibold text-slate-400 font-mono">
             {selectedFileFilter ? `Diff: ${selectedFileFilter}` : 'Full Commit Diff'}
           </span>
           {selectedFileFilter && (
             <button
               onClick={() => setSelectedFileFilter(null)}
-              className="text-[10px] text-amber-400 hover:text-amber-300 font-semibold"
+              className="text-[10px] text-[#d0bcff] hover:text-[#eaddff] font-semibold"
             >
               Clear Filter
             </button>
@@ -125,16 +125,16 @@ export const CommitDetailsPanel: React.FC<CommitDetailsPanelProps> = ({
   };
 
   return (
-    <div className="h-full flex flex-col bg-slate-900 border-l border-slate-800/80 w-full overflow-hidden">
+    <div className="h-full flex flex-col bg-[#1d1b20] border-l border-transparent w-full overflow-hidden">
       {/* Header */}
-      <div className="flex justify-between items-center px-6 py-4 border-b border-slate-800">
-        <div className="flex items-center gap-2 text-amber-400">
+      <div className="flex justify-between items-center px-6 py-4 border-b border-transparent">
+        <div className="flex items-center gap-2 text-[#d0bcff]">
           <GitCommit size={18} />
           <span className="font-semibold text-sm">Commit Details</span>
         </div>
         <button
           onClick={onClose}
-          className="text-slate-400 hover:text-white p-1 hover:bg-slate-800 rounded-lg transition-colors"
+          className="text-slate-400 hover:text-white p-1 hover:bg-slate-800 rounded-2xl transition-colors"
         >
           <X size={16} />
         </button>
@@ -151,7 +151,7 @@ export const CommitDetailsPanel: React.FC<CommitDetailsPanelProps> = ({
         </div>
 
         {/* Metadata grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-950/40 p-4 rounded-xl border border-slate-800/60">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#211f26] p-4 rounded-3xl border border-transparent">
           {/* Author */}
           <div className="flex items-start gap-3">
             <User className="text-slate-400 flex-shrink-0 mt-0.5" size={16} />
@@ -179,12 +179,12 @@ export const CommitDetailsPanel: React.FC<CommitDetailsPanelProps> = ({
               <FolderOpen size={14} /> Changed Files ({details.files.length})
             </h3>
             {selectedFileFilter && (
-              <span className="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded border border-amber-500/30">
+              <span className="text-[10px] bg-[#d0bcff] text-[#381e72]/20 text-[#eaddff] px-2 py-0.5 rounded border border-amber-500/30">
                 Filtered
               </span>
             )}
           </div>
-          <div className="max-h-48 overflow-y-auto border border-slate-800 rounded-lg bg-slate-950/30 divide-y divide-slate-800/60">
+          <div className="max-h-48 overflow-y-auto border border-transparent rounded-2xl bg-[#1d1b20] divide-y divide-slate-800/60">
             {details.files.map(file => {
               const isSelected = selectedFileFilter === file.file;
               return (
@@ -192,7 +192,7 @@ export const CommitDetailsPanel: React.FC<CommitDetailsPanelProps> = ({
                   key={file.file}
                   onClick={() => setSelectedFileFilter(isSelected ? null : file.file)}
                   className={`flex items-center justify-between p-2.5 text-xs cursor-pointer transition-colors ${
-                    isSelected ? 'bg-amber-500/10' : 'hover:bg-slate-800/40'
+                    isSelected ? 'bg-[#d0bcff] text-[#381e72]/10' : 'hover:bg-slate-800/40'
                   }`}
                 >
                   <div className="flex items-center gap-2 min-w-0 pr-4">

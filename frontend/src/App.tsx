@@ -232,11 +232,11 @@ export default function App() {
     : commits;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
+    <div className="min-h-screen flex flex-col bg-[#141218] text-slate-100 selection:bg-[#d0bcff] text-[#381e72]/30">
       {/* Navbar Header */}
-      <header className="bg-slate-900/80 border-b border-slate-800/80 backdrop-blur-md sticky top-0 z-10 px-6 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <header className="bg-[#1d1b20]/80 border-b border-transparent backdrop-blur-md sticky top-0 z-10 px-6 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-purple-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
+          <div className="w-9 h-9 rounded-3xl bg-gradient-to-br from-amber-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/10">
             <Sparkles className="text-white" size={18} />
           </div>
           <div>
@@ -257,13 +257,13 @@ export default function App() {
               value={repoPath}
               onChange={(e) => setRepoPath(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleLoadPath()}
-              className="w-full bg-slate-950/80 border border-slate-800 rounded-lg pl-10 pr-4 py-2 text-xs font-mono focus:outline-none focus:border-amber-500 placeholder-slate-600 transition-colors"
+              className="w-full bg-[#141218]/80 border border-transparent rounded-2xl pl-10 pr-4 py-2 text-xs font-mono focus:outline-none focus:border-amber-500 placeholder-slate-600 transition-colors"
             />
           </div>
           <button
             onClick={handleLoadPath}
             disabled={loadingRepo}
-            className="bg-amber-600 hover:bg-amber-500 active:bg-amber-700 disabled:bg-slate-800 text-white font-semibold py-2 px-4 rounded-lg text-xs flex items-center gap-1.5 transition-colors shadow-lg shadow-amber-600/10 cursor-pointer"
+            className="bg-[#d0bcff] text-[#381e72] hover:bg-[#d0bcff] text-[#381e72] active:bg-amber-700 disabled:bg-slate-800 text-white font-semibold py-2 px-4 rounded-2xl text-xs flex items-center gap-1.5 transition-colors shadow-lg shadow-none cursor-pointer"
           >
             {loadingRepo ? (
               <RefreshCw className="animate-spin" size={14} />
@@ -277,7 +277,7 @@ export default function App() {
       {/* Main Body */}
       {repoInfo && !repoInfo.isRepo ? (
         <div className="flex-1 flex flex-col items-center justify-center p-8 text-center max-w-md mx-auto">
-          <div className="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mb-4 text-slate-500">
+          <div className="w-16 h-16 rounded-full bg-[#1d1b20] border border-transparent flex items-center justify-center mb-4 text-slate-500">
             <Folder size={32} />
           </div>
           <h3 className="text-lg font-bold text-slate-200">No Git Repository Found</h3>
@@ -285,7 +285,7 @@ export default function App() {
             The path you entered is either not a directory, does not exist, or does not contain a Git repository.
           </p>
           <p className="text-xs text-slate-500 mt-1 italic">
-            Provide a path containing a <code className="font-mono bg-slate-900 px-1 py-0.5 rounded">.git</code> folder.
+            Provide a path containing a <code className="font-mono bg-[#1d1b20] px-1 py-0.5 rounded">.git</code> folder.
           </p>
         </div>
       ) : (
@@ -296,12 +296,12 @@ export default function App() {
             {/* Tabs & Filters */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               {/* Tab selector */}
-              <div className="flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-xl border border-slate-800/80 w-fit">
+              <div className="flex items-center gap-1.5 bg-[#1d1b20] p-1.5 rounded-3xl border border-transparent w-fit">
                 <button
                   onClick={() => setActiveTab('history')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold transition-all ${
                     activeTab === 'history'
-                      ? 'bg-amber-600 text-white shadow-md'
+                      ? 'bg-[#d0bcff] text-[#381e72] text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -309,9 +309,9 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => setActiveTab('analytics')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold transition-all ${
                     activeTab === 'analytics'
-                      ? 'bg-amber-600 text-white shadow-md'
+                      ? 'bg-[#d0bcff] text-[#381e72] text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -319,9 +319,9 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => setActiveTab('compare')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold transition-all ${
                     activeTab === 'compare'
-                      ? 'bg-amber-600 text-white shadow-md'
+                      ? 'bg-[#d0bcff] text-[#381e72] text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -329,9 +329,9 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => setActiveTab('files')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold transition-all ${
                     activeTab === 'files'
-                      ? 'bg-amber-600 text-white shadow-md'
+                      ? 'bg-[#d0bcff] text-[#381e72] text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -339,9 +339,9 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => setActiveTab('playground')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold transition-all ${
                     activeTab === 'playground'
-                      ? 'bg-amber-600 text-white shadow-md'
+                      ? 'bg-[#d0bcff] text-[#381e72] text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -349,9 +349,9 @@ export default function App() {
                 </button>
                 <button
                   onClick={() => setActiveTab('bonsai')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold transition-all ${
                     activeTab === 'bonsai'
-                      ? 'bg-amber-600 text-white shadow-md'
+                      ? 'bg-[#d0bcff] text-[#381e72] text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -368,7 +368,7 @@ export default function App() {
                     <select
                       value={selectedBranch}
                       onChange={(e) => handleBranchChange(e.target.value)}
-                      className="bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-4 py-1.5 text-xs text-slate-300 font-medium focus:outline-none focus:border-amber-500 cursor-pointer font-mono"
+                      className="bg-[#1d1b20] border border-transparent rounded-2xl pl-8 pr-4 py-1.5 text-xs text-slate-300 font-medium focus:outline-none focus:border-amber-500 cursor-pointer font-mono"
                     >
                       <option value="">All Branches</option>
                       {repoInfo?.branches.map(b => (
@@ -387,12 +387,12 @@ export default function App() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                        className="bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-4 py-1.5 text-xs focus:outline-none focus:border-amber-500"
+                        className="bg-[#1d1b20] border border-transparent rounded-2xl pl-8 pr-4 py-1.5 text-xs focus:outline-none focus:border-amber-500"
                       />
                     </div>
                     <button
                       onClick={handleSearch}
-                      className="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 transition-colors"
+                      className="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-2xl text-xs font-semibold text-slate-300 transition-colors"
                     >
                       Search
                     </button>
@@ -405,9 +405,9 @@ export default function App() {
             {activeTab === 'history' && (
               <div className="space-y-6">
                 {/* Timeline Replay Controller Card */}
-                <div className="bg-gradient-to-r from-amber-950/20 to-purple-950/20 border border-amber-500/10 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="bg-gradient-to-r from-amber-950/20 to-purple-950/20 border border-amber-500/10 rounded-3xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
+                    <div className="w-8 h-8 rounded-2xl bg-[#d0bcff] text-[#381e72]/10 flex items-center justify-center text-[#d0bcff]">
                       <Play size={16} />
                     </div>
                     <div>
@@ -420,20 +420,20 @@ export default function App() {
                     <button
                       onClick={startTimelineReplay}
                       disabled={isPlaying}
-                      className="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-600 px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-colors flex items-center gap-1"
+                      className="bg-[#d0bcff] text-[#381e72] hover:bg-[#d0bcff] text-[#381e72] disabled:bg-slate-800 disabled:text-slate-600 px-3 py-1.5 rounded-2xl text-xs font-bold text-white transition-colors flex items-center gap-1"
                     >
                       <Play size={12} fill="currentColor" /> Play Replay
                     </button>
                     <button
                       onClick={pauseTimelineReplay}
                       disabled={!isPlaying}
-                      className="bg-slate-800 hover:bg-slate-700 disabled:opacity-40 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-200 transition-colors flex items-center gap-1"
+                      className="bg-slate-800 hover:bg-slate-700 disabled:opacity-40 px-3 py-1.5 rounded-2xl text-xs font-bold text-slate-200 transition-colors flex items-center gap-1"
                     >
                       <Pause size={12} fill="currentColor" /> Pause
                     </button>
                     <button
                       onClick={resetTimelineReplay}
-                      className="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-200 transition-colors flex items-center gap-1"
+                      className="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-2xl text-xs font-bold text-slate-200 transition-colors flex items-center gap-1"
                     >
                       <RotateCcw size={12} /> Reset
                     </button>
@@ -442,7 +442,7 @@ export default function App() {
                     <select
                       value={playSpeed}
                       onChange={(e) => setPlaySpeed(parseInt(e.target.value, 10))}
-                      className="bg-slate-900 border border-slate-800 rounded-lg px-2 py-1.5 text-[10px] font-semibold text-slate-300 focus:outline-none"
+                      className="bg-[#1d1b20] border border-transparent rounded-2xl px-2 py-1.5 text-[10px] font-semibold text-slate-300 focus:outline-none"
                     >
                       <option value={1500}>0.7x Speed</option>
                       <option value={1000}>1.0x Speed</option>
@@ -454,7 +454,7 @@ export default function App() {
 
                 {/* Graph View */}
                 {loadingCommits ? (
-                  <div className="flex flex-col items-center justify-center p-24 bg-slate-900/30 rounded-xl border border-slate-850">
+                  <div className="flex flex-col items-center justify-center p-24 bg-[#1d1b20]/30 rounded-3xl border border-slate-850">
                     <div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-xs text-slate-400 mt-2">Fetching commits...</span>
                   </div>
@@ -512,7 +512,7 @@ export default function App() {
 
           {/* Sliding Commitment Details Panel Drawer */}
           {activeTab === 'history' && selectedSha && (
-            <div className="w-full md:w-[480px] lg:w-[580px] xl:w-[680px] flex-shrink-0 border-t md:border-t-0 md:border-l border-slate-800/80 bg-slate-900/90 backdrop-blur-md relative z-0">
+            <div className="w-full md:w-[480px] lg:w-[580px] xl:w-[680px] flex-shrink-0 border-t md:border-t-0 md:border-l border-transparent bg-[#1d1b20]/90 backdrop-blur-md relative z-0">
               <CommitDetailsPanel
                 details={commitDetails}
                 loading={detailsLoading}

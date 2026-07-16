@@ -20,6 +20,7 @@ import { AnalyticsDashboard } from './components/AnalyticsDashboard';
 import { BranchComparePanel } from './components/BranchComparePanel';
 import { FileTreeExplorer } from './components/FileTreeExplorer';
 import { GitPlayground } from './components/GitPlayground';
+import { GitBonsaiTree } from './components/GitBonsaiTree';
 
 interface RepoInfo {
   isRepo: boolean;
@@ -44,7 +45,7 @@ export default function App() {
   const [detailsLoading, setDetailsLoading] = useState<boolean>(false);
 
   // Tabs
-  const [activeTab, setActiveTab] = useState<'history' | 'analytics' | 'compare' | 'files' | 'playground'>('history');
+  const [activeTab, setActiveTab] = useState<'history' | 'analytics' | 'compare' | 'files' | 'playground' | 'bonsai'>('history');
 
   // Loading states
   const [loadingRepo, setLoadingRepo] = useState<boolean>(false);
@@ -346,6 +347,16 @@ export default function App() {
                 >
                   🎮 Playground
                 </button>
+                <button
+                  onClick={() => setActiveTab('bonsai')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                    activeTab === 'bonsai'
+                      ? 'bg-indigo-600 text-white shadow-md'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  🌳 Bonsai Tree
+                </button>
               </div>
 
               {/* Filtering Controls (Only for History Tab) */}
@@ -488,6 +499,14 @@ export default function App() {
 
             {activeTab === 'playground' && (
               <GitPlayground />
+            )}
+
+            {activeTab === 'bonsai' && (
+              <GitBonsaiTree
+                commits={commits}
+                onSelectCommit={setSelectedSha}
+                selectedSha={selectedSha}
+              />
             )}
           </div>
 

@@ -48,7 +48,7 @@ const FileNode: React.FC<{
         onClick={handleClick}
         className={`flex items-center py-1.5 px-2 rounded-lg text-xs cursor-pointer transition-colors ${
           isSelected
-            ? 'bg-indigo-500/20 text-indigo-300 font-semibold'
+            ? 'bg-amber-500/20 text-amber-300 font-semibold'
             : 'hover:bg-slate-800/40 text-slate-300 hover:text-white'
         }`}
         style={{ paddingLeft: `${level * 12 + 8}px` }}
@@ -63,9 +63,9 @@ const FileNode: React.FC<{
         <span className="mr-1.5">
           {node.type === 'dir' ? (
             isOpen ? (
-              <FolderOpen size={14} className="text-indigo-400" />
+              <FolderOpen size={14} className="text-amber-400" />
             ) : (
-              <Folder size={14} className="text-indigo-400" />
+              <Folder size={14} className="text-amber-400" />
             )
           ) : (
             <File size={14} className="text-slate-400" />
@@ -153,12 +153,12 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
       {/* File Tree Explorer (Left column, spanning 1/3) */}
       <div className="lg:col-span-1 bg-slate-950/30 rounded-xl p-4 border border-slate-800/60 flex flex-col h-full overflow-hidden">
         <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-          <Folder size={14} className="text-indigo-400" /> Repository Files
+          <Folder size={14} className="text-amber-400" /> Repository Files
         </h4>
         
         {loading ? (
           <div className="flex-1 flex items-center justify-center">
-            <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-5 h-5 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : error ? (
           <div className="flex-1 text-center text-xs text-rose-400 p-4">{error}</div>
@@ -189,7 +189,7 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
           </div>
         ) : loadingHistory ? (
           <div className="flex-1 flex items-center justify-center">
-            <div className="w-6 h-6 border-3 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-6 h-6 border-3 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : (
           <div className="flex-1 flex flex-col min-h-0">
@@ -224,7 +224,7 @@ export const FileTreeExplorer: React.FC<FileTreeExplorerProps> = ({
                     
                     <div className="bg-slate-900/40 hover:bg-slate-800/30 border border-slate-800/60 hover:border-slate-700/60 rounded-xl p-4 transition-all duration-150">
                       <div className="flex justify-between items-start gap-4">
-                        <h5 className="font-bold text-xs text-slate-200 group-hover:text-indigo-400 transition-colors">
+                        <h5 className="font-bold text-xs text-slate-200 group-hover:text-amber-400 transition-colors">
                           {item.message}
                         </h5>
                         <span className="font-mono text-[10px] text-slate-500 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">

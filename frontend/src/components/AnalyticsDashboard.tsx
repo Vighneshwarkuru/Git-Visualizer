@@ -36,7 +36,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center p-12 h-64">
-        <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
         <span className="text-sm text-slate-400 mt-2">Analyzing repository history...</span>
       </div>
     );
@@ -143,10 +143,10 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
 
     const getColorClass = (count: number) => {
       if (count === 0) return 'bg-slate-900 border-slate-950/20';
-      if (count <= 2) return 'bg-indigo-950/40 text-indigo-400 border-indigo-900/30';
-      if (count <= 5) return 'bg-indigo-800/40 text-indigo-300 border-indigo-700/40';
-      if (count <= 9) return 'bg-indigo-600/70 text-indigo-200 border-indigo-500/50';
-      return 'bg-indigo-500 text-white border-indigo-400';
+      if (count <= 2) return 'bg-amber-950/40 text-amber-400 border-amber-900/30';
+      if (count <= 5) return 'bg-amber-800/40 text-amber-300 border-amber-700/40';
+      if (count <= 9) return 'bg-amber-600/70 text-amber-200 border-amber-500/50';
+      return 'bg-amber-500 text-white border-amber-400';
     };
 
     return (
@@ -177,10 +177,10 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
         <div className="flex justify-end items-center gap-1.5 mt-3 text-[10px] text-slate-500 select-none">
           <span>Less</span>
           <div className="w-2.5 h-2.5 rounded-sm bg-slate-900 border border-slate-950/20" />
-          <div className="w-2.5 h-2.5 rounded-sm bg-indigo-950/40 border border-indigo-900/30" />
-          <div className="w-2.5 h-2.5 rounded-sm bg-indigo-800/40 border border-indigo-700/40" />
-          <div className="w-2.5 h-2.5 rounded-sm bg-indigo-600/70 border border-indigo-500/50" />
-          <div className="w-2.5 h-2.5 rounded-sm bg-indigo-500 border border-indigo-400" />
+          <div className="w-2.5 h-2.5 rounded-sm bg-amber-950/40 border border-amber-900/30" />
+          <div className="w-2.5 h-2.5 rounded-sm bg-amber-800/40 border border-amber-700/40" />
+          <div className="w-2.5 h-2.5 rounded-sm bg-amber-600/70 border border-amber-500/50" />
+          <div className="w-2.5 h-2.5 rounded-sm bg-amber-500 border border-amber-400" />
           <span>More</span>
         </div>
       </div>
@@ -199,7 +199,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     return (
       <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60 flex flex-col h-[320px]">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
-          <PieChart size={16} className="text-indigo-400" /> Codebase Composition
+          <PieChart size={16} className="text-amber-400" /> Codebase Composition
         </h4>
         <div className="flex items-center justify-around flex-1">
           <div className="relative w-36 h-36">
@@ -363,7 +363,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     return (
       <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
-          <Activity size={16} className="text-indigo-400" /> Commits Timeline (Last 12 Active Days)
+          <Activity size={16} className="text-amber-400" /> Commits Timeline (Last 12 Active Days)
         </h4>
         <div className="w-full">
           <svg viewBox={`0 0 ${width} ${height + 25}`} className="w-full">
@@ -428,7 +428,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Commits</span>
             <div className="text-2xl font-black text-slate-100 mt-1">{analytics.totalCommits}</div>
           </div>
-          <div className="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+          <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
             <GitCommit size={20} />
           </div>
         </div>
@@ -503,13 +503,13 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
         {/* Contributors */}
         <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60 flex flex-col h-[400px]">
           <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
-            <Users size={16} className="text-indigo-400" /> Contributor Leaderboard
+            <Users size={16} className="text-amber-400" /> Contributor Leaderboard
           </h4>
           <div className="flex-1 overflow-y-auto space-y-3 pr-1">
             {contributors.map((contrib) => (
               <div key={contrib.email} className="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/50 hover:bg-slate-800/20 border border-slate-800/40">
                 <div className="flex items-center gap-3 min-w-0 pr-4">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-xs font-black flex items-center justify-center text-white flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-purple-600 text-xs font-black flex items-center justify-center text-white flex-shrink-0">
                     {contrib.name.charAt(0).toUpperCase()}
                   </div>
                   <div className="min-w-0">
@@ -518,7 +518,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <span className="text-xs font-black font-mono text-indigo-400">{contrib.commits}</span>
+                  <span className="text-xs font-black font-mono text-amber-400">{contrib.commits}</span>
                   <span className="text-[9px] text-slate-500 uppercase block font-semibold">commits</span>
                 </div>
               </div>

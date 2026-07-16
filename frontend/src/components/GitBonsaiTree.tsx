@@ -351,7 +351,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
               setIsPlaying(true);
             }}
             disabled={isPlaying}
-            className="bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-800 px-3.5 py-1.5 rounded-xl text-xs font-bold text-white transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 px-3.5 py-1.5 rounded-xl text-xs font-bold text-white transition-colors flex items-center gap-1.5 cursor-pointer"
           >
             <Play size={12} fill="currentColor" /> Grow Tree
           </button>
@@ -389,7 +389,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
           {/* Sci-fi guide overlay */}
           <div className="absolute top-4 left-4 pointer-events-none text-[10px] text-slate-500 font-mono space-y-1 select-none">
             <div className="flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded bg-indigo-500" />
+              <div className="w-2 h-2 rounded bg-amber-500" />
               <span>Main Trunk (main branch)</span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -422,7 +422,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
                 return (
                   <div className="space-y-4">
                     <div className="border-b border-slate-800/80 pb-3">
-                      <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 font-mono">
+                      <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30 font-mono">
                         {node.branch}
                       </span>
                       <h4 className="font-bold text-sm text-slate-200 mt-2">{node.message}</h4>
@@ -466,7 +466,7 @@ export const GitBonsaiTree: React.FC<GitBonsaiTreeProps> = ({
           </div>
 
           <div className="bg-slate-900/30 border border-slate-800/60 rounded-xl p-3.5 text-[10px] text-slate-400 flex items-start gap-2 leading-relaxed">
-            <AlertCircle size={14} className="text-indigo-400 flex-shrink-0 mt-0.5" />
+            <AlertCircle size={14} className="text-amber-400 flex-shrink-0 mt-0.5" />
             <span>Clicking a leaf selects the commit. Dragging the timeline causes the tree to grow limb-by-limb!</span>
           </div>
         </div>

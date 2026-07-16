@@ -232,11 +232,11 @@ export default function App() {
     : commits;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-indigo-500/30">
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
       {/* Navbar Header */}
       <header className="bg-slate-900/80 border-b border-slate-800/80 backdrop-blur-md sticky top-0 z-10 px-6 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-purple-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
             <Sparkles className="text-white" size={18} />
           </div>
           <div>
@@ -257,13 +257,13 @@ export default function App() {
               value={repoPath}
               onChange={(e) => setRepoPath(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleLoadPath()}
-              className="w-full bg-slate-950/80 border border-slate-800 rounded-lg pl-10 pr-4 py-2 text-xs font-mono focus:outline-none focus:border-indigo-500 placeholder-slate-600 transition-colors"
+              className="w-full bg-slate-950/80 border border-slate-800 rounded-lg pl-10 pr-4 py-2 text-xs font-mono focus:outline-none focus:border-amber-500 placeholder-slate-600 transition-colors"
             />
           </div>
           <button
             onClick={handleLoadPath}
             disabled={loadingRepo}
-            className="bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 disabled:bg-slate-800 text-white font-semibold py-2 px-4 rounded-lg text-xs flex items-center gap-1.5 transition-colors shadow-lg shadow-indigo-600/10 cursor-pointer"
+            className="bg-amber-600 hover:bg-amber-500 active:bg-amber-700 disabled:bg-slate-800 text-white font-semibold py-2 px-4 rounded-lg text-xs flex items-center gap-1.5 transition-colors shadow-lg shadow-amber-600/10 cursor-pointer"
           >
             {loadingRepo ? (
               <RefreshCw className="animate-spin" size={14} />
@@ -301,7 +301,7 @@ export default function App() {
                   onClick={() => setActiveTab('history')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'history'
-                      ? 'bg-indigo-600 text-white shadow-md'
+                      ? 'bg-amber-600 text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -311,7 +311,7 @@ export default function App() {
                   onClick={() => setActiveTab('analytics')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'analytics'
-                      ? 'bg-indigo-600 text-white shadow-md'
+                      ? 'bg-amber-600 text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -321,7 +321,7 @@ export default function App() {
                   onClick={() => setActiveTab('compare')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'compare'
-                      ? 'bg-indigo-600 text-white shadow-md'
+                      ? 'bg-amber-600 text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -331,7 +331,7 @@ export default function App() {
                   onClick={() => setActiveTab('files')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'files'
-                      ? 'bg-indigo-600 text-white shadow-md'
+                      ? 'bg-amber-600 text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -341,7 +341,7 @@ export default function App() {
                   onClick={() => setActiveTab('playground')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'playground'
-                      ? 'bg-indigo-600 text-white shadow-md'
+                      ? 'bg-amber-600 text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -351,7 +351,7 @@ export default function App() {
                   onClick={() => setActiveTab('bonsai')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeTab === 'bonsai'
-                      ? 'bg-indigo-600 text-white shadow-md'
+                      ? 'bg-amber-600 text-white shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -368,7 +368,7 @@ export default function App() {
                     <select
                       value={selectedBranch}
                       onChange={(e) => handleBranchChange(e.target.value)}
-                      className="bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-4 py-1.5 text-xs text-slate-300 font-medium focus:outline-none focus:border-indigo-500 cursor-pointer font-mono"
+                      className="bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-4 py-1.5 text-xs text-slate-300 font-medium focus:outline-none focus:border-amber-500 cursor-pointer font-mono"
                     >
                       <option value="">All Branches</option>
                       {repoInfo?.branches.map(b => (
@@ -387,7 +387,7 @@ export default function App() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                        className="bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-4 py-1.5 text-xs focus:outline-none focus:border-indigo-500"
+                        className="bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-4 py-1.5 text-xs focus:outline-none focus:border-amber-500"
                       />
                     </div>
                     <button
@@ -405,9 +405,9 @@ export default function App() {
             {activeTab === 'history' && (
               <div className="space-y-6">
                 {/* Timeline Replay Controller Card */}
-                <div className="bg-gradient-to-r from-indigo-950/20 to-purple-950/20 border border-indigo-500/10 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="bg-gradient-to-r from-amber-950/20 to-purple-950/20 border border-amber-500/10 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                    <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
                       <Play size={16} />
                     </div>
                     <div>
@@ -420,7 +420,7 @@ export default function App() {
                     <button
                       onClick={startTimelineReplay}
                       disabled={isPlaying}
-                      className="bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-800 disabled:text-slate-600 px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-colors flex items-center gap-1"
+                      className="bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-600 px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-colors flex items-center gap-1"
                     >
                       <Play size={12} fill="currentColor" /> Play Replay
                     </button>
@@ -455,7 +455,7 @@ export default function App() {
                 {/* Graph View */}
                 {loadingCommits ? (
                   <div className="flex flex-col items-center justify-center p-24 bg-slate-900/30 rounded-xl border border-slate-850">
-                    <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-xs text-slate-400 mt-2">Fetching commits...</span>
                   </div>
                 ) : (

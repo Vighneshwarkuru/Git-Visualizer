@@ -138,7 +138,7 @@ export const TreeMap: React.FC<TreeMapProps> = ({
 
   // Group top-level folders to assign color palettes
   const getBlockColor = (path: string) => {
-    if (path.startsWith('backend')) return 'fill-indigo-650/40 stroke-indigo-500/30';
+    if (path.startsWith('backend')) return 'fill-amber-650/40 stroke-amber-500/30';
     if (path.startsWith('frontend')) return 'fill-emerald-650/40 stroke-emerald-500/30';
     return 'fill-slate-800/40 stroke-slate-700/30';
   };
@@ -146,7 +146,7 @@ export const TreeMap: React.FC<TreeMapProps> = ({
   return (
     <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60 flex flex-col">
       <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
-        <BarChart3 size={16} className="text-indigo-400" /> Repository TreeMap (Visual Hotspots)
+        <BarChart3 size={16} className="text-amber-400" /> Repository TreeMap (Visual Hotspots)
       </h4>
       <div className="w-full">
         <svg
@@ -202,7 +202,7 @@ export const TreeMap: React.FC<TreeMapProps> = ({
       </div>
       <div className="flex items-center gap-4 mt-3 text-[10px] text-slate-500 font-mono select-none">
         <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded bg-indigo-500/40 border border-indigo-500/30" />
+          <div className="w-2.5 h-2.5 rounded bg-amber-500/40 border border-amber-500/30" />
           <span>Backend Files</span>
         </div>
         <div className="flex items-center gap-1.5">

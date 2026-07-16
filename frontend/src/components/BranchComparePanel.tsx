@@ -72,7 +72,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
       {/* Selector controls */}
       <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60">
         <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
-          <ArrowLeftRight size={16} className="text-indigo-400" /> Compare Branches
+          <ArrowLeftRight size={16} className="text-amber-400" /> Compare Branches
         </h4>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -83,7 +83,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
             <select
               value={baseBranch}
               onChange={(e) => setBaseBranch(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 font-mono"
+              className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500 font-mono"
             >
               {branches.map(b => (
                 <option key={b} value={b}>{b}</option>
@@ -98,7 +98,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
             <select
               value={targetBranch}
               onChange={(e) => setTargetBranch(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 font-mono"
+              className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500 font-mono"
             >
               {branches.map(b => (
                 <option key={b} value={b}>{b}</option>
@@ -110,7 +110,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
         <button
           onClick={handleCompare}
           disabled={loading || baseBranch === targetBranch}
-          className="mt-4 w-full bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
+          className="mt-4 w-full bg-amber-600 hover:bg-amber-500 disabled:bg-slate-800 disabled:text-slate-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm"
         >
           {loading ? 'Comparing...' : baseBranch === targetBranch ? 'Select Different Branches' : 'Compare'}
         </button>
@@ -173,7 +173,7 @@ export const BranchComparePanel: React.FC<BranchComparePanelProps> = ({
             {/* Changed files list */}
             <div className="bg-slate-950/30 rounded-xl p-6 border border-slate-800/60 flex flex-col h-[320px]">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                <FileText size={14} className="text-indigo-400" /> Changed Files ({comparison.changedFiles.length})
+                <FileText size={14} className="text-amber-400" /> Changed Files ({comparison.changedFiles.length})
               </h4>
               <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
                 {comparison.changedFiles.length === 0 ? (

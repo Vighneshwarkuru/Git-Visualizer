@@ -1,44 +1,45 @@
 @import "tailwindcss";
 
-/* Base styles and custom scrollbar for rich aesthetics */
+/* Base styles and custom scrollbar for rich Obsidian/Bronze aesthetics */
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+    @apply bg-slate-950 text-slate-200 font-sans antialiased;
+    background-color: #08080a; /* Obsidian black */
     overflow-x: hidden;
   }
 }
 
-/* Custom scrollbars */
+/* Custom scrollbars with bronze accents */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: #08080a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.3);
-  border-radius: 4px;
+  background: rgba(217, 119, 6, 0.25); /* Gold/bronze tint */
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.5);
+  background: rgba(217, 119, 6, 0.45);
 }
 
-/* Custom glow animations */
-@keyframes pulse-glow {
+/* Sci-fi gold pulsing animations */
+@keyframes gold-glow {
   0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
+    opacity: 0.4;
+    box-shadow: 0 0 10px rgba(217, 119, 6, 0.2);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
   }
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s infinite ease-in-out;
+.animate-gold-glow {
+  animation: gold-glow 2.5s infinite ease-in-out;
 }

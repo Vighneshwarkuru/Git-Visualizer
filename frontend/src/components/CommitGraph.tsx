@@ -10,14 +10,14 @@ interface CommitGraphProps {
 }
 
 const COLORS = [
-  '#f43f5e', // rose-500
-  '#3b82f6', // blue-500
-  '#10b981', // emerald-500
-  '#f59e0b', // amber-500
-  '#8b5cf6', // violet-500
-  '#ec4899', // pink-500
-  '#14b8a6', // teal-500
-  '#f97316', // orange-500
+  '#f59e0b', // Pulsing Gold
+  '#f43f5e', // Coral Copper
+  '#10b981', // Jade Green
+  '#38bdf8', // Ice Blue
+  '#c084fc', // Amethyst Purple
+  '#ec4899', // Pink
+  '#14b8a6', // Teal
+  '#fb923c', // Amber/Orange
 ];
 
 export const CommitGraph: React.FC<CommitGraphProps> = ({
@@ -299,7 +299,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                 onMouseLeave={() => setHoveredSha(null)}
                 className={`flex items-center px-4 cursor-pointer transition-all duration-150 border-b border-slate-800/30 ${opacity} ${
                   isSelected
-                    ? 'bg-slate-800/70 border-l-2 border-indigo-500'
+                    ? 'bg-amber-500/10 border-l-2 border-amber-500'
                     : 'hover:bg-slate-800/30 border-l-2 border-transparent'
                 }`}
                 style={{ height: rowHeight }}
@@ -315,7 +315,7 @@ export const CommitGraph: React.FC<CommitGraphProps> = ({
                     {branches.map(branch => (
                       <span
                         key={branch}
-                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30 flex-shrink-0"
+                        className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/25 flex-shrink-0"
                       >
                         {branch}
                       </span>
